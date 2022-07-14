@@ -354,6 +354,7 @@
 "Assets/Script/BulletMenager.cs"
 "Assets/Script/BulletSpawn.cs"
 "Assets/Script/CameraControler.cs"
+"Assets/Script/DownExplosion.cs"
 "Assets/Script/EnemyLife.cs"
 "Assets/Script/GunBulletsMagazine.cs"
 "Assets/Script/GunInputMenager.cs"

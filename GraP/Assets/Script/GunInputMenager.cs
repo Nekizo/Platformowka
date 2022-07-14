@@ -35,6 +35,9 @@ public class GunInputMenager : MonoBehaviour
 
     [SerializeField] private float recolStreng = 10;
 
+    [SerializeField] private float recolDownStreng = 200;
+    [SerializeField] private float recolDownAngle = 30;
+
     private int smallBulletCombo;
 
     private Rigidbody rb;
@@ -102,9 +105,20 @@ public class GunInputMenager : MonoBehaviour
     }
     private void Ricol()
     {
-        Vector3 direction = transform.rotation * Vector3.back;
-        rb.velocity += new Vector3(direction.x, 0, direction.z) * recolStreng;
+        
+        
+        if (Mathf.Abs( transform.eulerAngles.x-270)<recolDownAngle)
+        {
+            
+            rb.velocity += Vector3.down * recolDownStreng;
+        }
+        else
+        {
+            Vector3 direction = transform.rotation * Vector3.back;
+            rb.velocity += new Vector3(direction.x, 0, direction.z) * recolStreng;
+        }
     }
+    
     private void Charging()
     {
         overloaded = true;

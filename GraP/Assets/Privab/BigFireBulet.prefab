@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8570023367538273049}
   - component: {fileID: 8570023367538273055}
   - component: {fileID: 8570023367538273048}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BuletMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 8570023367589964870}
   - component: {fileID: 8570023367589964871}
   - component: {fileID: 8570023367589964868}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BigFireBulet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
