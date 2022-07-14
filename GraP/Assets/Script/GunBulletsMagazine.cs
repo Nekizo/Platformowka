@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GunSmallBullet : MonoBehaviour
+public class GunBulletsMagazine : MonoBehaviour
 {
     private GameObject[] bullets;
 
@@ -11,7 +11,7 @@ public class GunSmallBullet : MonoBehaviour
     
     private void Awake()
     {
-        GetComponent<GunInputMenager>().SmallBullet += Fire;
+        //GetComponent<GunInputMenager>().SmallBullet += Fire;
 
         bullets = new GameObject[bulletQuantity];
         for (int i = 0; i < bulletQuantity; i++)
@@ -22,7 +22,7 @@ public class GunSmallBullet : MonoBehaviour
         }
     }
     
-    void Fire()
+    public void Fire()
     {
         GameObject notActive = null;
         for (int i = 0; i < bullets.Length; i++)
@@ -38,7 +38,7 @@ public class GunSmallBullet : MonoBehaviour
             notActive.SetActive(true);
             notActive.transform.position = transform.position;
             notActive.transform.rotation = transform.rotation;
-            notActive.GetComponent<BulletMenager>().BulletStart();
+            notActive.GetComponent<BulletMenager>()?.BulletStart();
         }
         
 
