@@ -5,7 +5,14 @@ using UnityEngine;
 public class BulletMenager : MonoBehaviour
 {
     [SerializeField] private float damage;
-
+    [SerializeField] private float destroyTime;
+    [SerializeField] private float speed;
+    public void BulletStart()
+    {
+        Invoke("EndTime", destroyTime);
+        
+        gameObject.GetComponent<Rigidbody>().velocity=((transform.rotation * Vector3.forward) * 100 * speed);
+    }
     private void OnTriggerEnter(Collider other)
     {
         EnemyLife enemy = other.GetComponent<EnemyLife>();
@@ -13,6 +20,11 @@ public class BulletMenager : MonoBehaviour
         {
             enemy.Damage(damage);
         }
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+
+    }
+    void EndTime()
+    {
+        gameObject.SetActive(false);
     }
 }

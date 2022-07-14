@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerJump : MonoBehaviour
 {
-    Rigidbody rb;
+    private Rigidbody rb;
     
     private PlayerInput playerInput;
     private PlayerControler playerInputAction;
@@ -26,6 +26,7 @@ public class PlayerJump : MonoBehaviour
 
         playerInputAction = new PlayerControler();
         playerInputAction.GamePlay.Enable();
+        
         playerInputAction.GamePlay.Jump.performed += Jump;
 
     }
