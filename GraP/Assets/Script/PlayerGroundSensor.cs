@@ -33,6 +33,14 @@ public class PlayerGroundSensor : MonoBehaviour
         }
         
     }
+    private void OnTriggerStay(Collider other)
+    {
+        if (!isGrounded)
+        {
+            GroundEnter.Invoke();
+            isGrounded = true;
+        }
+    }
     private void OnTriggerExit(Collider other)
     {
         GroundExit?.Invoke();

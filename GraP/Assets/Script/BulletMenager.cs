@@ -7,7 +7,9 @@ public class BulletMenager : MonoBehaviour
     [SerializeField] private float damage;
     [SerializeField] private float destroyTime;
     [SerializeField] private float speed;
-    public event System.Action<Collider> EnterCollision;
+    [SerializeField] private int bulletId;
+    //public event System.Action<Collider> EnterCollision;
+    //[SerializeField] private string[] tagList;
     private float startTime;
     public void BulletStart()
     {
@@ -18,7 +20,19 @@ public class BulletMenager : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        EnterCollision?.Invoke(other);
+        //EnterCollision?.Invoke(other);
+        /*if (tagList != null)
+        {
+            for (int i = 0; i < tagList.Length; i++)
+            {
+                if (other.tag == tagList[i])
+                {
+                    
+                    break;
+                }
+            }
+        }*/
+        other.GetComponent<BulletActivates>()?.Hit.Invoke(bulletId);
         EnemyLife enemy = other.GetComponent<EnemyLife>();
         enemy?.Damage(damage);
         gameObject.SetActive(false);

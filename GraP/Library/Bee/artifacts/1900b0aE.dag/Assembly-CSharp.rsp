@@ -351,6 +351,9 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/Player/PlayerControler.cs"
+"Assets/Script/ActivateObject.cs"
+"Assets/Script/BulletActivateRotate.cs"
+"Assets/Script/BulletActivates.cs"
 "Assets/Script/BulletMenager.cs"
 "Assets/Script/BulletSpawn.cs"
 "Assets/Script/CameraControler.cs"
@@ -360,7 +363,12 @@
 "Assets/Script/GunInputMenager.cs"
 "Assets/Script/PlayerGroundSensor.cs"
 "Assets/Script/PlayerJump.cs"
+"Assets/Script/PlayerLife.cs"
 "Assets/Script/PlayerMoveControler.cs"
+"Assets/Script/TouchesEnemyDamage.cs"
+"Assets/Script/TouchesPlayerDamage.cs"
+"Assets/Script/TouchesRecoil.cs"
+"Assets/Script/TouchesSensor.cs"
 -langversion:9.0
 
 /deterministic

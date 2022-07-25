@@ -33,14 +33,17 @@ public class GunBulletsMagazine : MonoBehaviour
             }
             notActive = bullets[i];
         }
-        if (notActive != null)
+        if (notActive == null)
         {
-            notActive.SetActive(true);
-            notActive.transform.position = transform.position;
-            notActive.transform.rotation = transform.rotation;
-            notActive.GetComponent<BulletMenager>()?.BulletStart();
+            notActive = bullets[bullets.Length - 1];
         }
         
+
+        notActive.SetActive(true);
+        notActive.transform.position = transform.position;
+        notActive.transform.rotation = transform.rotation;
+        notActive.GetComponent<BulletMenager>()?.BulletStart();
+
 
     }
 

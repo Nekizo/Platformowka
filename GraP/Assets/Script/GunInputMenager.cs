@@ -38,7 +38,11 @@ public class GunInputMenager : MonoBehaviour
     [SerializeField] private float recolDownStreng = 200;
     [SerializeField] private float recolDownAngle = 30;
 
+    [SerializeField] private PlayerGroundSensor groundSensor;
+
     private int smallBulletCombo;
+
+    public bool fall;
 
     private Rigidbody rb;
     private void Start()
@@ -109,8 +113,12 @@ public class GunInputMenager : MonoBehaviour
         
         if (Mathf.Abs( transform.eulerAngles.x-270)<recolDownAngle)
         {
+            if(!groundSensor.isGrounded)
+            {
+                rb.velocity += Vector3.down * recolDownStreng;
+                fall = true;
+            }
             
-            rb.velocity += Vector3.down * recolDownStreng;
         }
         else
         {
