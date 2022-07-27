@@ -41,8 +41,13 @@ public class GunBulletsMagazine : MonoBehaviour
 
         notActive.SetActive(true);
         notActive.transform.position = transform.position;
-        notActive.transform.rotation = transform.rotation;
-        notActive.GetComponent<BulletMenager>()?.BulletStart();
+        if (notActive.GetComponent<BulletMenager>() != null)
+        {
+            
+            notActive.transform.rotation = transform.rotation;
+            notActive.GetComponent<BulletMenager>().BulletStart();
+        }
+        
 
 
     }
