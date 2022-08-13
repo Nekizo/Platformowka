@@ -22,7 +22,7 @@ public class PlayerMoveControler : MonoBehaviour
     Rigidbody rb;
     /// <summary> Functions to override movement speed. Will use the last added override. </summary>
     //public List<System.Func<float>> speedOverrides = new List<System.Func<float>>();
-    private PlayerInput playerInput;
+    //private PlayerInput playerInput;
     private PlayerControler playerInputAction;
 
     private float targetMovingSpeed;
@@ -50,7 +50,7 @@ public class PlayerMoveControler : MonoBehaviour
     {
         // Get the rigidbody on this.
         rb = GetComponent<Rigidbody>();
-        playerInput = GetComponent<PlayerInput>();
+        //playerInput = GetComponent<PlayerInput>();
 
         playerInputAction = new PlayerControler();
         playerInputAction.GamePlay.Enable();

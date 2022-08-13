@@ -13,8 +13,18 @@ public class EnemyLife : MonoBehaviour
     private void Awake()
     {
         hp = hpMax;
+        Death += GetComponent<EnemyDeactivation>().Deactivation;
+        
     }
-    
+    private void Start()
+    {
+        SaveMenager.instance.Restart += ResetGame;
+    }
+    private void ResetGame()
+    {
+        hp = hpMax;
+        healthBar.transform.localScale = new Vector3(1, 1);
+    }
     public void Damage(float value)
     {
         hp -= value;

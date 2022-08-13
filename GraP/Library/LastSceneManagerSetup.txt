@@ -5,5 +5,13 @@ sceneSetups:
   isSubScene: 0
 - path: Assets/Scenes/PlayerScen.unity
   isLoaded: 1
+  isActive: 0
+  isSubScene: 0
+- path: Assets/Scenes/GameMenager.unity
+  isLoaded: 1
+  isActive: 0
+  isSubScene: 0
+- path: Assets/Scenes/UI.unity
+  isLoaded: 1
   isActive: 1
   isSubScene: 0

@@ -6,23 +6,19 @@ public class PlayerJump : MonoBehaviour
 {
     private Rigidbody rb;
     
-    private PlayerInput playerInput;
+    
     private PlayerControler playerInputAction;
 
     [SerializeField]private float jumpStrength = 2;
 
     [SerializeField, Tooltip("Prevents jumping when the transform is in mid-air.")]
-    private PlayerGroundSensor groundCheck;
-    void Start()
-    {
-        // Try to get groundCheck.
-        groundCheck = GetComponentInChildren<PlayerGroundSensor>();
-    }
+    //private PlayerGroundSensor groundCheck;
+    
     void Awake()
     {
         // Get the rigidbody on this.
         rb = GetComponent<Rigidbody>();
-        playerInput = GetComponent<PlayerInput>();
+        
 
         playerInputAction = new PlayerControler();
         playerInputAction.GamePlay.Enable();
@@ -32,10 +28,10 @@ public class PlayerJump : MonoBehaviour
     }
     void Jump(InputAction.CallbackContext ctx)
     {
-        if (groundCheck.isGrounded)
+        if (PlayerGroundSensor.isGrounded)
         {
             rb.velocity += Vector3.up * jumpStrength *10;
-            groundCheck.isGrounded = false;
+            PlayerGroundSensor.isGrounded = false;
         }
         
     }

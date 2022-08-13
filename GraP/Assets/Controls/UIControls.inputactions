@@ -1,0 +1,54 @@
+{
+    "name": "UIControls",
+    "maps": [
+        {
+            "name": "Move",
+            "id": "78124338-b3f1-4fd5-a34e-cbfc34306273",
+            "actions": [
+                {
+                    "name": "Arrows",
+                    "type": "Value",
+                    "id": "cc8302ed-a133-4ceb-85d8-fe8015f024da",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Approval",
+                    "type": "Button",
+                    "id": "0d3af93d-9722-4b09-acce-7fc515208c16",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2f3e25a6-2ae8-4122-b931-7ec1fb07bc74",
+                    "path": "<Gamepad>/dpad",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Arrows",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "54195ca7-e350-45d5-9001-7abb2d462a23",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Approval",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

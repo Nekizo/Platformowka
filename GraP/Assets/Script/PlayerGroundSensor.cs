@@ -7,7 +7,7 @@ public class PlayerGroundSensor : MonoBehaviour
     [Tooltip("The time from touching the ground to changing the value of the variable.")]
     [SerializeField] private float delay;
 
-    public bool isGrounded = false;
+    public static bool isGrounded = false;
 
     private bool isGroundedTrue = false;// if the variable is true and touches the ground
 

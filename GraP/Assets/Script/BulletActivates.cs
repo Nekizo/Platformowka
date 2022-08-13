@@ -16,6 +16,6 @@ public class BulletActivates : MonoBehaviour
     }
     private void AfterHitStart()
     {
-        AfterHit.Invoke(idBullet);
+        AfterHit?.Invoke(idBullet);
     }
 }
