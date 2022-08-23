@@ -19,7 +19,7 @@ public class CameraControler : MonoBehaviour
         // Get the character from the FirstPersonMovement in parents.
         character = GetComponentInParent<PlayerMoveControler>().transform;
     }
-    [SerializeField]private PlayerInput playerInput;
+    
     private void Awake()
     {
         playerInputAction = new PlayerControler();
@@ -36,7 +36,7 @@ public class CameraControler : MonoBehaviour
     {
         // Get smooth velocity.
         Vector2 mouseDelta = playerInputAction.GamePlay.Camera.ReadValue<Vector2>();//new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
-        Vector2 rawFrameVelocity = Vector2.Scale(mouseDelta, Vector2.one * sensitivity);
+        Vector2 rawFrameVelocity = Vector2.Scale(mouseDelta, Vector2.one * sensitivity * Time.deltaTime * 60);
         frameVelocity = Vector2.Lerp(frameVelocity, rawFrameVelocity, 1 / smoothing);
         velocity += frameVelocity;
         velocity.y = Mathf.Clamp(velocity.y, -90, 90);

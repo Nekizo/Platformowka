@@ -15,15 +15,25 @@ public class PlayerLife : MonoBehaviour
         {
             healthBar.transform.localScale = new Vector3((0), 1);
             Death?.Invoke();
+            SaveMenager.instance.Load();
+            MenuMenager.instance.MenuOn();
         }
         else
         {
             healthBar.transform.localScale = new Vector3((hp / hpMax), 1);
         }
     }
+    private void LifeRest()
+    {
+        hp = hpMax;
+    }
     private void Awake()
     {
         hp = hpMax;
         instance = this;
+    }
+    private void Start()
+    {
+        SaveMenager.instance.Restart += LifeRest;
     }
 }

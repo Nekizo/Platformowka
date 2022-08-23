@@ -9,8 +9,13 @@ public class EnemyDeactivation : MonoBehaviour
         date = GetComponent<SaveObjectDate>();
         date.action += Deactivation;
         SaveMenager.instance.Restart+=Activation;
+        SaveMenager.instance.Unload += Unload;
     }
-    
+    private void Unload()
+    {
+        SaveMenager.instance.Restart -= Activation;
+        SaveMenager.instance.Unload -= Unload;
+    }
     public void Deactivation()
     {
         //data.active = false;

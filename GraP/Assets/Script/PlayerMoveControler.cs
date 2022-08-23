@@ -28,6 +28,7 @@ public class PlayerMoveControler : MonoBehaviour
     private float targetMovingSpeed;
 
     PlayerGroundSensor groundCheck;
+
     void Start()
     {
         // Try to get groundCheck.
@@ -90,4 +91,20 @@ public class PlayerMoveControler : MonoBehaviour
         rb.velocity += (transform.rotation * new Vector3(targetVelocity.x, 0, targetVelocity.y))*Time.deltaTime*30;
     }
    
+}
+public struct SpeedModifier
+{
+    public float priority;
+    public float value;
+    public float time;
+
+    public SpeedModifier(float priority, float value, float time)
+    {
+        this.priority=priority;
+        this.value=value;
+        this.time = time;
+
+
+    }
+
 }

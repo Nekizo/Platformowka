@@ -16,6 +16,7 @@ public class DownExplosion : MonoBehaviour
         if (other.tag == "Enemy")
         {
             other.GetComponent<Rigidbody>().velocity += (transform.position - other.transform.position).normalized * -10* streng;
+            other.GetComponent<EnemyNavMeshAgent>().Stunning(2);
         }
         if (other.tag == "Cube")
         {

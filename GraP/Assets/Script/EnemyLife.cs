@@ -19,6 +19,12 @@ public class EnemyLife : MonoBehaviour
     private void Start()
     {
         SaveMenager.instance.Restart += ResetGame;
+        SaveMenager.instance.Unload += Unload;
+    }
+    private void Unload()
+    {
+        SaveMenager.instance.Restart -= ResetGame;
+        SaveMenager.instance.Unload -= Unload;
     }
     private void ResetGame()
     {

@@ -1,23 +1,78 @@
 using UnityEngine;
+using System.Collections;
 using UnityEngine.InputSystem;
 
 public class MenuMenager : MonoBehaviour
 {
-    private UIControls playerInputAction;
+    private OnMenuControler OnMenu;
+    [SerializeField] private Scene[] scenes;
+    [SerializeField] private float max;
+    [SerializeField] private float min;
+    [SerializeField] private float speed;
+    public bool activeMenu;
+    public static MenuMenager instance;
+    public event System.Action MenuOnGlobal;
     void Awake()
     {
-        
 
+        instance = this;
 
-        playerInputAction = new UIControls();
-        playerInputAction.Move.Enable();
+        OnMenu = new OnMenuControler();
+        OnMenu.Move.Enable();
 
-        playerInputAction.Move.Approval.performed += Save;
+        OnMenu.Move.Start.performed += On;
 
     }
-    void Save(InputAction.CallbackContext ctx)
+    public void MenuOn()
     {
-        SaveMenager.instance.Load();
+        StopAllCoroutines();
+        GameDate.instance.StopGame.Invoke();
+        StartCoroutine(MoveRight(speed));
+        activeMenu = true;
+        MenuOnGlobal.Invoke();
+    }
+    public void MenuOff()
+    {
+        StopAllCoroutines();
+        GameDate.instance.StartGame.Invoke();
+        StartCoroutine(MoveLeft(speed));
+        activeMenu = false;
+    }
+    void On(InputAction.CallbackContext ctx)
+    {
+        if (!activeMenu)
+        {
+            MenuOn();
+        }
+        else
+        {
+            MenuOff();
+        }
+        
+        //SaveMenager.instance.Load();
+        //MenagerScene.instance.LoadScene(scenes);
+    }
+    IEnumerator MoveRight (float speed)
+    {
+        //Debug.Log("position" + transform.position.x);
+        while (transform.position.x < max)
+        {
+            
+            transform.position += Vector3.right * speed * Time.unscaledDeltaTime;
+            yield return null;
+        }
+        transform.position = new Vector3(max, transform.position.y);
+        
+    }
+    IEnumerator MoveLeft(float speed)
+    {
+        while (transform.position.x > min)
+        {
+            //Debug.Log("position" + transform.position.x);
+            transform.position -= Vector3.right * speed * Time.unscaledDeltaTime;
+            yield return null;
+        }
+        transform.position = new Vector3(min, transform.position.y);
 
     }
 }

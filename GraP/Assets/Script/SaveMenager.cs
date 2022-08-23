@@ -25,6 +25,7 @@ public class SaveMenager : MonoBehaviour
     [SerializeField] private string fileNameEnd = ".save";
 
     public event System.Action Restart;
+    public event System.Action Unload;
     public void SaveAddObjectData(ObjectData objectData)
     {
         objectDatas.Add(objectData);
@@ -32,6 +33,7 @@ public class SaveMenager : MonoBehaviour
     
     public void Load()
     {
+        Unload?.Invoke();
         if(File.Exists(Application.persistentDataPath + directory + fileNameProgress + fileNameEnd))
         {
             using (FileStream plik = File.Open(Application.persistentDataPath + directory + fileNameProgress + fileNameEnd, FileMode.Open))
@@ -67,7 +69,8 @@ public class SaveMenager : MonoBehaviour
                 }
                 else
                 {
-                    
+                    //Restart = null;
+
                     landing = true;
                 }
             }
@@ -143,7 +146,7 @@ public class SaveMenager : MonoBehaviour
     private void loadObjects()
     {
         Debug.Log("loadObjects");
-        Restart.Invoke();
+        Restart?.Invoke();
         for (int i = 0; i < objectDatas.Count; i++)
         {
             if (objectDatas[i].active)

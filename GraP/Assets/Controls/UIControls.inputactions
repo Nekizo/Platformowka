@@ -38,6 +38,28 @@
                 },
                 {
                     "name": "",
+                    "id": "1f4ffdc8-16cb-4183-89d9-1a5e965a6e8a",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Arrows",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6d319593-f45c-43da-b324-c2febf2e324b",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Arrows",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "54195ca7-e350-45d5-9001-7abb2d462a23",
                     "path": "<Gamepad>/buttonWest",
                     "interactions": "",

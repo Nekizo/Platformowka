@@ -54,7 +54,7 @@ public class GunInputMenager : MonoBehaviour
 
         rb = GetComponentInParent<Rigidbody>();
 
-        PlayerInput playerInput = GetComponentInParent<PlayerInput>();
+        //PlayerInput playerInput = GetComponentInParent<PlayerInput>();
 
         playerInputAction = new PlayerControler();
         playerInputAction.GamePlay.Enable();
@@ -70,39 +70,44 @@ public class GunInputMenager : MonoBehaviour
 
     private void FireStop(InputAction.CallbackContext ctx)
     {
-        fireEndTime= Time.time;
-        if (Time.time - fireStartTime < bigBulletOverloadedTime)
+        if (Time.timeScale != 0)
         {
-            if (overloaded)
+
+
+            fireEndTime = Time.time;
+            if (Time.time - fireStartTime < bigBulletOverloadedTime)
             {
-                SmallBullet.Invoke();
-                Invoke("Charging", overloadedTime);
-                smallBulletCombo += 1;
-                overloaded = false;
-            }
-        }
-        else
-        {
-            
-            if (Time.time - fireStartTime < bigFireBulletOverloadedTime)
-            {
-                if(smallBulletCombo==2 && Time.time - fireStartTime < cubeOverloadedTime)
+                if (overloaded)
                 {
-                    SpawnCube.Invoke();
+                    SmallBullet.Invoke();
+                    Invoke("Charging", overloadedTime);
+                    smallBulletCombo += 1;
+                    overloaded = false;
                 }
-                else
-                {
-                    BigBullet.Invoke();
-                    Ricol();
-                }
-                
             }
             else
             {
-                BigFireBullet.Invoke();
-                Ricol();
+
+                if (Time.time - fireStartTime < bigFireBulletOverloadedTime)
+                {
+                    if (smallBulletCombo == 2 && Time.time - fireStartTime < cubeOverloadedTime)
+                    {
+                        SpawnCube.Invoke();
+                    }
+                    else
+                    {
+                        BigBullet.Invoke();
+                        Ricol();
+                    }
+
+                }
+                else
+                {
+                    BigFireBullet.Invoke();
+                    Ricol();
+                }
+                smallBulletCombo = 0;
             }
-            smallBulletCombo = 0;
         }
         
 

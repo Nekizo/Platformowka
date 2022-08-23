@@ -1,4 +1,4 @@
-using System.Collections;
+//using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,17 +9,21 @@ public class MenagerScene : MonoBehaviour
     public string[] loadScene=new string[4];
     public int landingScene;
 
+    private List<AsyncOperation> asyncOperations = new List<AsyncOperation>();
+
+    public event System.Action<SceneTypes> AddedScene;
+
     private void Awake()
     {
         //SceneManager.LoadScene("menu 1", LoadSceneMode.Additive);
         
          
         instance = this;
-        
 
+        
     }
     
-    public event System.Action<SceneTypes> AddedScene;
+    
     //public event System.Action loaded;
 
     public void AddScene(SceneTypes type, string name)
@@ -37,20 +41,28 @@ public class MenagerScene : MonoBehaviour
 
     public void LoadScene(Scene scene)
     {
-        landingScene += 1;
+        
         Debug.Log("loaud scene"+(int)scene.typ+"-"+ scene.name + "-" + loadScene[(int)scene.typ]);
         if (loadScene[(int)scene.typ] != scene.name)
         {
-            SceneManager.UnloadSceneAsync(loadScene[(int)scene.typ]);
+            landingScene += 1;
+            //AsyncOperation[] asyncOperations = new AsyncOperation[2];
+            if (loadScene[(int)scene.typ] != "")
+            {
+                asyncOperations.Add(SceneManager.UnloadSceneAsync(loadScene[(int)scene.typ]));
+            }
+            
             if (scene.name != "")
             {
-                SceneManager.LoadScene(scene.name, LoadSceneMode.Additive);
+                asyncOperations.Add( SceneManager.LoadSceneAsync(scene.name, LoadSceneMode.Additive));
             }
+            //return asyncOperations;
         }
         else
         {
-            landingScene -= 1;
+            
             AddedScene?.Invoke(scene.typ);
+            //return null;
         }
         
         
@@ -75,6 +87,7 @@ public class MenagerScene : MonoBehaviour
             
             currentScenes[i]=CurrentScene(typ[i]);
         }
+        StartCoroutine(GetComponent<LoadingScreen>().Loading(asyncOperations));
         return currentScenes;
     }
     public void LoadScene(Scene[] scenes)
