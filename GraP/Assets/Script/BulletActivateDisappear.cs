@@ -5,9 +5,20 @@ public class BulletActivateDisappear : MonoBehaviour
     [SerializeField] private int idActivator = 2;
     [SerializeField] private float disappearTime = 0;
     [SerializeField] private GameObject activeObject;
+    [SerializeField] private BulletActivates bulletActivates;
+    public event System.Action AfterDisappear;
     private void Start()
     {
-        GetComponentInParent<BulletActivates>().AfterHit += Activate;
+        if (bulletActivates == null)
+        {
+            GetComponentInParent<BulletActivates>().AfterHit += Activate;
+        }
+        else
+        {
+            bulletActivates.AfterHit += Activate;
+
+        }
+        
     }
 
     private void Activate(int id)
@@ -21,7 +32,7 @@ public class BulletActivateDisappear : MonoBehaviour
             }
             else
             {
-                activeObject.SetActive(false);
+                Deactivate();
             }
             
         }
@@ -32,6 +43,7 @@ public class BulletActivateDisappear : MonoBehaviour
     private void Deactivate()
     {
         activeObject.SetActive(false);
+        AfterDisappear?.Invoke();
     }
 
 }

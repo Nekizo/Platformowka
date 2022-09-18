@@ -8,7 +8,8 @@ public class GunBulletsMagazine : MonoBehaviour
 
     [SerializeField] private GameObject bullet;
     [SerializeField] private int bulletQuantity;
-    
+    [SerializeField] private string bulletComponent = "BulletMenager";
+
     private void Awake()
     {
         //GetComponent<GunInputMenager>().SmallBullet += Fire;
@@ -41,11 +42,11 @@ public class GunBulletsMagazine : MonoBehaviour
 
         notActive.SetActive(true);
         notActive.transform.position = transform.position;
-        if (notActive.GetComponent<BulletMenager>() != null)
+        if (notActive.GetComponent(bulletComponent) != null)
         {
             
             notActive.transform.rotation = transform.rotation;
-            notActive.GetComponent<BulletMenager>().BulletStart();
+            notActive.GetComponent(bulletComponent).SendMessage("BulletStart");//.BulletStart();
         }
         
 

@@ -1,6 +1,6 @@
 
 using UnityEngine;
-using UnityEngine.InputSystem;
+//using UnityEngine.InputSystem;
 
 
 public class PlayerMoveControler : MonoBehaviour
@@ -36,6 +36,12 @@ public class PlayerMoveControler : MonoBehaviour
         groundCheck.GroundEnter += Ground;
         groundCheck.GroundExit += Flying;
         Ground();
+        SaveMenager.instance.Restart += Restart;
+    }
+    void Restart()
+    {
+        rb.velocity = Vector3.zero;
+        rb.Sleep();
     }
     void Flying()
     {

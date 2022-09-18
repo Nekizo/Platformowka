@@ -7,6 +7,8 @@ public class EnemyLife : MonoBehaviour
     [SerializeField] private float hpMax;
     private float hp;
 
+    private Vector3 startPos;
+
     [SerializeField, Tooltip("You need to connect a moving health bar here.")] private Image healthBar;
 
     public event System.Action Death;
@@ -14,7 +16,7 @@ public class EnemyLife : MonoBehaviour
     {
         hp = hpMax;
         Death += GetComponent<EnemyDeactivation>().Deactivation;
-        
+        startPos = transform.position;
     }
     private void Start()
     {
@@ -30,6 +32,7 @@ public class EnemyLife : MonoBehaviour
     {
         hp = hpMax;
         healthBar.transform.localScale = new Vector3(1, 1);
+        transform.position = startPos;
     }
     public void Damage(float value)
     {

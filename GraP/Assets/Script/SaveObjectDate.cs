@@ -3,7 +3,7 @@ using UnityEngine;
 public class SaveObjectDate : MonoBehaviour
 {
     public System.Action action;
-    [SerializeField] private bool privateSave;
+    [SerializeField] private bool privateSave=true;
     public ObjectData data;
 
     private void Awake()

@@ -379,6 +379,7 @@
 "Assets/Samples/Universal RP/12.1.7/URP Package Samples/SharedAssets/Scripts/AutoLoadPipelineAsset.cs"
 "Assets/Samples/Universal RP/12.1.7/URP Package Samples/SharedAssets/Scripts/FirstPersonController.cs"
 "Assets/Script/ActivateObject.cs"
+"Assets/Script/ActivatorMenager.cs"
 "Assets/Script/BulletActivateDisappear.cs"
 "Assets/Script/BulletActivateGun.cs"
 "Assets/Script/BulletActivateRotate.cs"
@@ -388,9 +389,12 @@
 "Assets/Script/CameraControler.cs"
 "Assets/Script/DownExplosion.cs"
 "Assets/Script/EnemyAttack.cs"
+"Assets/Script/EnemyBulletMenager.cs"
+"Assets/Script/EnemyCharging.cs"
 "Assets/Script/EnemyDeactivation.cs"
 "Assets/Script/EnemyLife.cs"
 "Assets/Script/EnemyNavMeshAgent.cs"
+"Assets/Script/EnemyShot.cs"
 "Assets/Script/GameDate.cs"
 "Assets/Script/GunBulletsMagazine.cs"
 "Assets/Script/GunInputMenager.cs"
@@ -411,6 +415,7 @@
 "Assets/Script/TouchesPlayerDamage.cs"
 "Assets/Script/TouchesRecoil.cs"
 "Assets/Script/TouchesSensor.cs"
+"Assets/Script/WallMenager.cs"
 -langversion:9.0
 
 /deterministic

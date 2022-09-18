@@ -6,6 +6,7 @@ public class ActivateObject : MonoBehaviour
     [SerializeField] private int idActivator = 2;
     [SerializeField] private float activateTime = 0.1f;
     [SerializeField] private GameObject notActive;
+    [SerializeField] private bool disappear;
     private void Start()
     {
         GetComponentInParent<BulletActivates>().Hit += Activate;
@@ -15,7 +16,7 @@ public class ActivateObject : MonoBehaviour
     {
         if (id == idActivator)
         {
-            notActive.SetActive(true);
+            notActive.SetActive(!disappear);
             Invoke("Deactivate", activateTime);
         }
         
@@ -24,6 +25,6 @@ public class ActivateObject : MonoBehaviour
     }
     private void Deactivate()
     {
-        notActive.SetActive(false);
+        notActive.SetActive(disappear);
     }
 }

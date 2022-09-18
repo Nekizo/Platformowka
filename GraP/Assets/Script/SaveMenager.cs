@@ -33,7 +33,7 @@ public class SaveMenager : MonoBehaviour
     
     public void Load()
     {
-        Unload?.Invoke();
+        
         if(File.Exists(Application.persistentDataPath + directory + fileNameProgress + fileNameEnd))
         {
             using (FileStream plik = File.Open(Application.persistentDataPath + directory + fileNameProgress + fileNameEnd, FileMode.Open))
@@ -70,7 +70,7 @@ public class SaveMenager : MonoBehaviour
                 else
                 {
                     //Restart = null;
-
+                    Unload?.Invoke();
                     landing = true;
                 }
             }

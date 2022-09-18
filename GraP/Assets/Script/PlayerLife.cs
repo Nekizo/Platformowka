@@ -8,24 +8,37 @@ public class PlayerLife : MonoBehaviour
     public event System.Action Death;
     public static PlayerLife instance;
     [SerializeField, Tooltip("You need to connect a moving health bar here.")] private Image healthBar;
+
+    private bool immortality;
     public void Damage(float value)
     {
-        hp -= value;
-        if (hp < 0)
+        if (!immortality)
         {
-            healthBar.transform.localScale = new Vector3((0), 1);
-            Death?.Invoke();
-            SaveMenager.instance.Load();
-            MenuMenager.instance.MenuOn();
+            hp -= value;
+            if (hp < 0)
+            {
+                healthBar.transform.localScale = new Vector3((0), 1);
+                Death?.Invoke();
+                SaveMenager.instance.Load();
+                MenuMenager.instance.MenuOn();
+            }
+            else
+            {
+                healthBar.transform.localScale = new Vector3((hp / hpMax), 1);
+            }
+            immortality = true;
+            Invoke("Mortality", 0.5f);
         }
-        else
-        {
-            healthBar.transform.localScale = new Vector3((hp / hpMax), 1);
-        }
+        
+    }
+    private void Mortality()
+    {
+        immortality = false;
     }
     private void LifeRest()
     {
         hp = hpMax;
+        healthBar.transform.localScale = new Vector3(1, 1);
     }
     private void Awake()
     {

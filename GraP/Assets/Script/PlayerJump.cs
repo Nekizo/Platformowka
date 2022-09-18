@@ -28,7 +28,7 @@ public class PlayerJump : MonoBehaviour
     }
     void Jump(InputAction.CallbackContext ctx)
     {
-        if (PlayerGroundSensor.isGrounded)
+        if (PlayerGroundSensor.isGrounded && Time.time!=0)
         {
             rb.velocity += Vector3.up * jumpStrength *10;
             PlayerGroundSensor.isGrounded = false;

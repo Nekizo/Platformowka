@@ -6,6 +6,7 @@ public class BulletMenager : MonoBehaviour
     [SerializeField] private float destroyTime;
     [SerializeField] private float speed;
     [SerializeField] private int bulletId;
+    
     //public event System.Action<Collider> EnterCollision;
     //[SerializeField] private string[] tagList;
     private float startTime;
